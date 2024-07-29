@@ -6,7 +6,7 @@ import authRouter from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
-import cors from "cors";
+import cors from "cors"
 dotenv.config();
 
 mongoose
@@ -21,17 +21,11 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
-/**
- * debuggin major v2: 
-  - cors origin error since rendrer doesn't allow the wildcard entry,
-  - so we are gonna use cors origin and set our frontend origin in whitelist for every type of methods (GET,HEAD....)
- */
 app.use(
   cors({
-    origin: "https://main--key2homes.netlify.app",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: "*",
   })
-); 
+);
 app.use(express.json());
 
 app.use(cookieParser());
